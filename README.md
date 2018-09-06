@@ -1,9 +1,11 @@
 ## Enumerable
 
 ```bash
-private static IEnumerable<TResult> CastIterator<TResult>(IEnumerable source) {
+private static IEnumerable<TResult> OfTypeIterator<TResult>(IEnumerable source) {
     foreach (object obj in source) {
-        yield return (TResult)obj;
+        if (obj is TResult result) {
+            yield return result;
+        }
     }
 }
 ```
